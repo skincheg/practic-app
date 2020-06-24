@@ -60,6 +60,8 @@ namespace PracticApp
             new Deal().Delete(dealID);
 
             MessageBox.Show("Успешно");
+            dealDataGrid.ItemsSource = new Deal().GetData();
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
