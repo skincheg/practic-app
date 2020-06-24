@@ -121,7 +121,7 @@
                     <Button Style="{StaticResource UpperButton}" Content="Добавить риэлтора" Margin="0,0,10,0" Click="AddNewClient" />
                     <Button Style="{StaticResource UpperButton}" Content="Удалить риэлтора" Click="DeleteClient" />
                 </StackPanel>
-                <DataGrid MaxHeight="150" SelectionChanged="personDataGrid_SelectionChanged" IsReadOnly="True" x:Name="personDataGrid1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" Width="500" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid Height="150" SelectionChanged="personDataGrid_SelectionChanged" IsReadOnly="True" x:Name="personDataGrid1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" Width="500" RowDetailsVisibilityMode="VisibleWhenSelected">
                     <DataGrid.Columns>
                         <DataGridTextColumn x:Name="iDColumn1" Binding="{Binding ID}" Header="ID" Width="30"/>
                         <DataGridTextColumn x:Name="nameColumn1" Binding="{Binding Name}" Header="Name" Width="*"/>

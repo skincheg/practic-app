@@ -23,6 +23,7 @@ namespace PracticApp
         public MainWindow()
         {
             InitializeComponent();
+
         }
 
         private void AddRealtor(object sender, RoutedEventArgs e)
@@ -58,5 +59,28 @@ namespace PracticApp
                 this.DragMove();
         }
 
+        private void AddRealty(object sender, RoutedEventArgs e)
+        {
+            Window addRealty = new AddRealty();
+            Hide();
+            addRealty.ShowDialog();
+            Show();
+        }
+
+        private void AddOffer(object sender, RoutedEventArgs e)
+        {
+            Window AddOffer = new AddOffer();
+            Hide();
+            AddOffer.ShowDialog();
+            Show();
+        }
+
+        private void AddDemand(object sender, RoutedEventArgs e)
+        {
+            Window AddDemand = new AddDemand();
+            Hide();
+            AddDemand.ShowDialog();
+            Show();
+        }
     }
 }

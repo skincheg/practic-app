@@ -55,12 +55,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddDemand.xaml.cs">
+      <DependentUpon>AddDemand.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddNewClient.xaml.cs">
       <DependentUpon>AddNewClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewOffer.xaml.cs">
+      <DependentUpon>AddNewOffer.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddNewRealtor.xaml.cs">
       <DependentUpon>AddNewRealtor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddNewRealty.xaml.cs">
+      <DependentUpon>AddNewRealty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddOffer.xaml.cs">
+      <DependentUpon>AddOffer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddRealty.xaml.cs">
+      <DependentUpon>AddRealty.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseRouter.cs" />
+    <Compile Include="Demand.cs" />
+    <Compile Include="Offer.cs" />
     <Compile Include="RealtorsDataSet.cs">
       <DependentUpon>RealtorsDataSet.xsd</DependentUpon>
     </Compile>
@@ -69,7 +87,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RealtorsDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Realty.cs" />
     <Page Include="AddClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddDemand.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -77,11 +100,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddNewOffer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddNewRealtor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddNewRealty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddOffer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddRealtor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddRealty.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

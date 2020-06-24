@@ -120,13 +120,11 @@
                     <Button Style="{StaticResource UpperButton}" Content="Добавить клиента" Margin="0,0,10,0" Click="AddNewClient" />
                     <Button Style="{StaticResource UpperButton}" Content="Удалить клиента" Click="DeleteClient" />
                 </StackPanel>
-                <DataGrid SelectionChanged="personDataGrid_SelectionChanged" IsReadOnly="True" x:Name="personDataGrid1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" Width="500" RowDetailsVisibilityMode="VisibleWhenSelected">
+                <DataGrid Height="120" SelectionChanged="personDataGrid_SelectionChanged" IsReadOnly="True" x:Name="personDataGrid1" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0" Width="500" RowDetailsVisibilityMode="VisibleWhenSelected">
                     <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="iDColumn1" Binding="{Binding ID}" Header="ID" Width="30"/>
                         <DataGridTextColumn x:Name="nameColumn1" Binding="{Binding Name}" Header="Name" Width="*"/>
                         <DataGridTextColumn x:Name="surnameColumn1" Binding="{Binding Surname}" Header="Surname" Width="*"/>
                         <DataGridTextColumn x:Name="patronymicColumn1" Binding="{Binding Patronymic}" Header="Patronymic" Width="*"/>
-                        <DataGridTextColumn x:Name="roleColumn" Binding="{Binding Role}" Header="Role" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
 
@@ -151,7 +149,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Label Content="Phone:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                        <Label Content="Телефон:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                         <TextBox x:Name="phoneTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                     </Grid>
                     <Grid x:Name="grid2" DataContext="{StaticResource personClientsViewSource}" HorizontalAlignment="Left" VerticalAlignment="Center">
@@ -162,7 +160,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Label Content="Email:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+                        <Label Content="Почта:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
                         <TextBox x:Name="emailTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding Email, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
                     </Grid>
                 </StackPanel>

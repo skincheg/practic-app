@@ -1,4 +1,6 @@
-﻿namespace PracticApp
+﻿using System;
+
+namespace PracticApp
 {
 
 
@@ -7,9 +9,22 @@
     }
 }
 
-namespace PracticApp.RealtorsDataSetTableAdapters {
-    
-    
-    public partial class ClientsTableAdapter {
+namespace PracticApp.RealtorsDataSetTableAdapters
+{
+    partial class RealtyTableAdapter
+    {
+    }
+
+    public partial class ClientsTableAdapter
+    {
+        public static explicit operator ClientsTableAdapter(PersonTableAdapter v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static explicit operator ClientsTableAdapter(RealtyTableAdapter v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

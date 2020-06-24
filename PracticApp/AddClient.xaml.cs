@@ -24,6 +24,7 @@ namespace PracticApp
         public AddClient()
         {
             InitializeComponent();
+            
         }
 
 
@@ -139,7 +140,7 @@ namespace PracticApp
                 var currentClient = new PracticApp.RealtorsDataSetTableAdapters.ClientsTableAdapter().InitializeTextBox(clientID);
                 phoneTextBox.Text = currentClient.First().Phone;
                 emailTextBox.Text = currentClient.First().Email;
-                var currentClientCopy = new PracticApp.RealtorsDataSetTableAdapters.PersonTableAdapter().InitializeClient(clientID).First();
+                var currentClientCopy = new PracticApp.RealtorsDataSetTableAdapters.PersonTableAdapter().InitializeClient(Convert.ToString(clientID)).First();
                 string clientName = String.IsNullOrEmpty(currentClientCopy.Name) ? "" : currentClientCopy.Name;
                 string clientSurname = String.IsNullOrEmpty(currentClientCopy.Surname) ? "" : currentClientCopy.Surname;
                 string clientPatronymic = String.IsNullOrEmpty(currentClientCopy.Patronymic) ? "" : currentClientCopy.Patronymic;

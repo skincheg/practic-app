@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PracticApp"
         mc:Ignorable="d"
-        Title="" Height="450" Width="800" MouseDown="DragAndMoveWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="" Height="450" Width="800" MouseDown="DragAndMoveWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" >
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF97D9E1"/>
@@ -15,8 +15,8 @@
     <Window.Resources>
         <Style x:Key="UpperButton" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Margin" Value="0,5"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Background" Value="#FF0091EA"/>
             <Setter Property="Foreground" Value="White"/>
@@ -79,8 +79,8 @@
 
         <Style x:Key="OutlineBtn" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Margin" Value="0,5"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Background" Value="White"/>
             <Setter Property="Foreground" Value="#FF0091EA"/>
@@ -176,7 +176,18 @@
                 <Button Style="{StaticResource UpperButton}" Click="AddRealtor"  >
                     <TextBlock Text="Работа с риэлторами"/>
                 </Button>
-                <Button Click="AddClient" Content="Работа с клиентами" Style="{StaticResource OutlineBtn}"/>
+                <Button Style="{StaticResource UpperButton}" Click="AddClient"  >
+                    <TextBlock Text="Работа с клиентами"/>
+                </Button>
+                <Button Style="{StaticResource OutlineBtn}" Click="AddRealty"  >
+                    <TextBlock Text="Работа с недвижимостью"/>
+                </Button>
+                <Button Style="{StaticResource OutlineBtn}" Click="AddOffer"  >
+                    <TextBlock Text="Работа с предложениями"/>
+                </Button>
+                <Button Style="{StaticResource OutlineBtn}" Click="AddDemand"  >
+                    <TextBlock Text="Работа с потребностями"/>
+                </Button>
             </StackPanel>
         </Grid>
     </Grid>

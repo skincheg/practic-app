@@ -21,3 +21,13 @@ C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticAp
 C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddNewClient.baml
 C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddNewRealtor.g.cs
 C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddNewRealtor.baml
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddRealty.g.cs
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddRealty.baml
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddNewRealty.g.cs
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddNewRealty.baml
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddOffer.g.cs
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddOffer.baml
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddNewOffer.g.cs
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddNewOffer.baml
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddDemand.g.cs
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddDemand.baml
