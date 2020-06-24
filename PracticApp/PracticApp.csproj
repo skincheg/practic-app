@@ -55,11 +55,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddDeal.xaml.cs">
+      <DependentUpon>AddDeal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddDemand.xaml.cs">
       <DependentUpon>AddDemand.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddNewClient.xaml.cs">
       <DependentUpon>AddNewClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewDeal.xaml.cs">
+      <DependentUpon>AddNewDeal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewDemand.xaml.cs">
+      <DependentUpon>AddNewDemand.xaml</DependentUpon>
     </Compile>
     <Compile Include="AddNewOffer.xaml.cs">
       <DependentUpon>AddNewOffer.xaml</DependentUpon>
@@ -77,6 +86,7 @@
       <DependentUpon>AddRealty.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabaseRouter.cs" />
+    <Compile Include="Deal.cs" />
     <Compile Include="Demand.cs" />
     <Compile Include="Offer.cs" />
     <Compile Include="RealtorsDataSet.cs">
@@ -92,11 +102,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddDeal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddDemand.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AddNewClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddNewDeal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddNewDemand.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

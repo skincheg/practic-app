@@ -24,6 +24,7 @@ namespace PracticApp
         public PracticApp.RealtorsDataSetTableAdapters.HouseFilterTableAdapter HouseFilterTableAdapter;
         public PracticApp.RealtorsDataSetTableAdapters.LandFilterTableAdapter LandFilterTableAdapter;
         public PracticApp.RealtorsDataSetTableAdapters.DemandTableAdapter DemandTableAdapter;
+        public PracticApp.RealtorsDataSetTableAdapters.DealTableAdapter DealTableAdapter;
 
 
         public DatabaseRouter(string type)
@@ -52,6 +53,17 @@ namespace PracticApp
                     this.LandFilterTableAdapter = new RealtorsDataSetTableAdapters.LandFilterTableAdapter();
                     this.DemandTableAdapter = new RealtorsDataSetTableAdapters.DemandTableAdapter();
                     break;
+                case "Deal":
+                    this.RealtyTableAdapter = new RealtorsDataSetTableAdapters.RealtyTableAdapter();
+                    this.RealtyAddressesTableAdapter = new RealtorsDataSetTableAdapters.RealtyAddressesTableAdapter();
+                    this.ApartmentTableAdapter = new RealtorsDataSetTableAdapters.ApartmentTableAdapter();
+                    this.HouseTableAdapter = new RealtorsDataSetTableAdapters.HouseTableAdapter();
+                    this.LandTableAdapter = new RealtorsDataSetTableAdapters.LandTableAdapter();
+                    this.RealtyTypesTableAdapter = new RealtorsDataSetTableAdapters.RealtyTypesTableAdapter();
+                    this.DealTableAdapter = new RealtorsDataSetTableAdapters.DealTableAdapter();
+                    this.DemandTableAdapter = new RealtorsDataSetTableAdapters.DemandTableAdapter();
+                    this.OfferTableAdapter = new RealtorsDataSetTableAdapters.OfferTableAdapter();
+                    break;
             }
             
         }
@@ -64,6 +76,8 @@ namespace PracticApp
                     return this.RealtyAddressesTableAdapter.GetData();
                 case "Offer":
                     return this.OfferTableAdapter.GetData();
+                case "Deal":
+                    return this.DealTableAdapter.GetData();
                 default:
                     return new DataTable();
             }
@@ -107,6 +121,26 @@ namespace PracticApp
         public void UpdateLand(decimal minArea, decimal maxArea, int id)
         {
             LandFilterTableAdapter.UpdateLand(minArea, maxArea, id);
+        }
+
+        public void DeleteDemand(int id)
+        {
+            DemandTableAdapter.DeleteDemand(id);
+        }
+
+        public void DeleteDeal(int id)
+        {
+            DealTableAdapter.DeleteQuery(id);
+        }
+
+        public void UpdateDeal(int demandId, int offerId, int id)
+        {
+            DealTableAdapter.UpdateQuery(demandId, offerId, id);
+        }
+
+        public void NewDeal(int demandId, int offerId)
+        {
+            DealTableAdapter.InsertQuery(demandId, offerId);
         }
 
         public DataRow GetFilterData(string type, int id)
@@ -229,6 +263,11 @@ namespace PracticApp
         public void DeleteOffer(int id)
         {
             OfferTableAdapter.DeleteOffer(id);
+        }
+
+        public DataRow GetOfferByID(int id)
+        {
+            return OfferTableAdapter.GetDataByID(id).First();
         }
 
         public void InsertOffer(int clientID, int realtorID, int realtyID, decimal price)

@@ -189,11 +189,18 @@ namespace PracticApp
 
         private void AddDemandBtn(object sender, RoutedEventArgs e)
         {
+            AddNewDemand addNewDemand = new AddNewDemand();
 
+            addNewDemand.ShowDialog();
         }
 
         private void DeleteDemand(object sender, RoutedEventArgs e)
         {
+            Demand demand = new Demand(typeDemand);
+
+            demand.Delete(demandID);
+
+            demandDataGrid.ItemsSource = demand.GetData();
 
         }
     }

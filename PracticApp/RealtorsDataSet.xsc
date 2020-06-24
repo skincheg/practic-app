@@ -20,15 +20,27 @@
     <TableUISetting Name="Realtors">
       <ColumnUISettings>
         <ColumnUISetting Name="ID">
-          <ControlSettings>
-            <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
               <BindableControlInfo Name="ComboBox" Type="System.Windows.Controls.ComboBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-            </ControlSetting>
-          </ControlSettings>
+            </ControlSetting></ControlSettings>
         </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>
     <TableUISetting Name="Realty">
+      <ColumnUISettings>
+        <ColumnUISetting Name="ID">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Controls.ComboBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+        <ColumnUISetting Name="CoordinateLatitudes">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="TextBox" Type="System.Windows.Controls.TextBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+            </ControlSetting></ControlSettings>
+        </ColumnUISetting>
+      </ColumnUISettings>
+    </TableUISetting>
+    <TableUISetting Name="Offer">
       <ColumnUISettings>
         <ColumnUISetting Name="ID">
           <ControlSettings>
@@ -37,17 +49,6 @@
             </ControlSetting>
           </ControlSettings>
         </ColumnUISetting>
-        <ColumnUISetting Name="CoordinateLatitudes">
-          <ControlSettings>
-            <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
-              <BindableControlInfo Name="TextBox" Type="System.Windows.Controls.TextBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-            </ControlSetting>
-          </ControlSettings>
-        </ColumnUISetting>
-      </ColumnUISettings>
-    </TableUISetting>
-    <TableUISetting Name="Offer">
-      <ColumnUISettings>
         <ColumnUISetting Name="ClientID">
           <ControlSettings>
             <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
@@ -71,14 +72,23 @@
         </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>
-    <TableUISetting Name="RealtyType">
+    <TableUISetting Name="Demand">
       <ColumnUISettings>
-        <ColumnUISetting Name="Type">
+        <ColumnUISetting Name="ID">
           <ControlSettings>
             <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
               <BindableControlInfo Name="ComboBox" Type="System.Windows.Controls.ComboBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
             </ControlSetting>
           </ControlSettings>
+        </ColumnUISetting>
+      </ColumnUISettings>
+    </TableUISetting>
+    <TableUISetting Name="RealtyType">
+      <ColumnUISettings>
+        <ColumnUISetting Name="Type">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+              <BindableControlInfo Name="ComboBox" Type="System.Windows.Controls.ComboBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+            </ControlSetting></ControlSettings>
         </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>

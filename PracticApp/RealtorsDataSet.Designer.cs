@@ -54,6 +54,8 @@ namespace PracticApp {
         
         private LandFilterDataTable tableLandFilter;
         
+        private DealDataTable tableDeal;
+        
         private global::System.Data.DataRelation relationFK_Clients_Person;
         
         private global::System.Data.DataRelation relationFK_Realtors_Person;
@@ -93,6 +95,10 @@ namespace PracticApp {
         private global::System.Data.DataRelation relationFK_HouseFilter_Demand;
         
         private global::System.Data.DataRelation relationFK_LandFilter_Demand;
+        
+        private global::System.Data.DataRelation relationFK_Deal_Demand;
+        
+        private global::System.Data.DataRelation relationFK_Deal_Offer;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -166,6 +172,9 @@ namespace PracticApp {
                 }
                 if ((ds.Tables["LandFilter"] != null)) {
                     base.Tables.Add(new LandFilterDataTable(ds.Tables["LandFilter"]));
+                }
+                if ((ds.Tables["Deal"] != null)) {
+                    base.Tables.Add(new DealDataTable(ds.Tables["Deal"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -337,6 +346,16 @@ namespace PracticApp {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DealDataTable Deal {
+            get {
+                return this.tableDeal;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -446,6 +465,9 @@ namespace PracticApp {
                 }
                 if ((ds.Tables["LandFilter"] != null)) {
                     base.Tables.Add(new LandFilterDataTable(ds.Tables["LandFilter"]));
+                }
+                if ((ds.Tables["Deal"] != null)) {
+                    base.Tables.Add(new DealDataTable(ds.Tables["Deal"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -570,6 +592,12 @@ namespace PracticApp {
                     this.tableLandFilter.InitVars();
                 }
             }
+            this.tableDeal = ((DealDataTable)(base.Tables["Deal"]));
+            if ((initTable == true)) {
+                if ((this.tableDeal != null)) {
+                    this.tableDeal.InitVars();
+                }
+            }
             this.relationFK_Clients_Person = this.Relations["FK_Clients_Person"];
             this.relationFK_Realtors_Person = this.Relations["FK_Realtors_Person"];
             this.relationFK_RealtyAddresses_Realty = this.Relations["FK_RealtyAddresses_Realty"];
@@ -590,6 +618,8 @@ namespace PracticApp {
             this.relationFK_ApartmentFilter_Demand = this.Relations["FK_ApartmentFilter_Demand"];
             this.relationFK_HouseFilter_Demand = this.Relations["FK_HouseFilter_Demand"];
             this.relationFK_LandFilter_Demand = this.Relations["FK_LandFilter_Demand"];
+            this.relationFK_Deal_Demand = this.Relations["FK_Deal_Demand"];
+            this.relationFK_Deal_Offer = this.Relations["FK_Deal_Offer"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -630,6 +660,8 @@ namespace PracticApp {
             base.Tables.Add(this.tableHouseFilter);
             this.tableLandFilter = new LandFilterDataTable();
             base.Tables.Add(this.tableLandFilter);
+            this.tableDeal = new DealDataTable();
+            base.Tables.Add(this.tableDeal);
             global::System.Data.ForeignKeyConstraint fkc;
             fkc = new global::System.Data.ForeignKeyConstraint("FK_Clients_Person", new global::System.Data.DataColumn[] {
                         this.tablePerson.IDColumn}, new global::System.Data.DataColumn[] {
@@ -725,6 +757,14 @@ namespace PracticApp {
                         this.tableDemand.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableLandFilter.IDColumn}, false);
             this.Relations.Add(this.relationFK_LandFilter_Demand);
+            this.relationFK_Deal_Demand = new global::System.Data.DataRelation("FK_Deal_Demand", new global::System.Data.DataColumn[] {
+                        this.tableDemand.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDeal.DemandIDColumn}, false);
+            this.Relations.Add(this.relationFK_Deal_Demand);
+            this.relationFK_Deal_Offer = new global::System.Data.DataRelation("FK_Deal_Offer", new global::System.Data.DataColumn[] {
+                        this.tableOffer.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableDeal.OfferIDColumn}, false);
+            this.Relations.Add(this.relationFK_Deal_Offer);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -814,6 +854,12 @@ namespace PracticApp {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeLandFilter() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializeDeal() {
             return false;
         }
         
@@ -916,6 +962,9 @@ namespace PracticApp {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void LandFilterRowChangeEventHandler(object sender, LandFilterRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void DealRowChangeEventHandler(object sender, DealRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3613,6 +3662,8 @@ namespace PracticApp {
             
             private global::System.Data.DataColumn columnPrice;
             
+            private global::System.Data.DataColumn columnIsClosed;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public OfferDataTable() {
@@ -3688,6 +3739,14 @@ namespace PracticApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IsClosedColumn {
+                get {
+                    return this.columnIsClosed;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3723,14 +3782,15 @@ namespace PracticApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public OfferRow AddOfferRow(ClientsRow parentClientsRowByFK_Offer_Clients, RealtorsRow parentRealtorsRowByFK_Offer_Realtors, RealtyRow parentRealtyRowByFK_Offer_Realty, decimal Price) {
+            public OfferRow AddOfferRow(ClientsRow parentClientsRowByFK_Offer_Clients, RealtorsRow parentRealtorsRowByFK_Offer_Realtors, RealtyRow parentRealtyRowByFK_Offer_Realty, decimal Price, bool IsClosed) {
                 OfferRow rowOfferRow = ((OfferRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         null,
                         null,
-                        Price};
+                        Price,
+                        IsClosed};
                 if ((parentClientsRowByFK_Offer_Clients != null)) {
                     columnValuesArray[1] = parentClientsRowByFK_Offer_Clients[0];
                 }
@@ -3774,6 +3834,7 @@ namespace PracticApp {
                 this.columnRealtorID = base.Columns["RealtorID"];
                 this.columnRealtyID = base.Columns["RealtyID"];
                 this.columnPrice = base.Columns["Price"];
+                this.columnIsClosed = base.Columns["IsClosed"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3789,6 +3850,8 @@ namespace PracticApp {
                 base.Columns.Add(this.columnRealtyID);
                 this.columnPrice = new global::System.Data.DataColumn("Price", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrice);
+                this.columnIsClosed = new global::System.Data.DataColumn("IsClosed", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsClosed);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -3948,6 +4011,8 @@ namespace PracticApp {
             
             private global::System.Data.DataColumn columnMaxPrice;
             
+            private global::System.Data.DataColumn columnIsClosed;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DemandDataTable() {
@@ -4039,6 +4104,14 @@ namespace PracticApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IsClosedColumn {
+                get {
+                    return this.columnIsClosed;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -4074,7 +4147,7 @@ namespace PracticApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public DemandRow AddDemandRow(ClientsRow parentClientsRowByFK_Demand_Clients, RealtorsRow parentRealtorsRowByFK_Demand_Realtors, RealtyTypeRow parentRealtyTypeRowByFK_Demand_RealtyType, string Address, int MinPrice, int MaxPrice) {
+            public DemandRow AddDemandRow(ClientsRow parentClientsRowByFK_Demand_Clients, RealtorsRow parentRealtorsRowByFK_Demand_Realtors, RealtyTypeRow parentRealtyTypeRowByFK_Demand_RealtyType, string Address, int MinPrice, int MaxPrice, bool IsClosed) {
                 DemandRow rowDemandRow = ((DemandRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -4083,7 +4156,8 @@ namespace PracticApp {
                         null,
                         Address,
                         MinPrice,
-                        MaxPrice};
+                        MaxPrice,
+                        IsClosed};
                 if ((parentClientsRowByFK_Demand_Clients != null)) {
                     columnValuesArray[1] = parentClientsRowByFK_Demand_Clients[0];
                 }
@@ -4129,6 +4203,7 @@ namespace PracticApp {
                 this.columnAddress = base.Columns["Address"];
                 this.columnMinPrice = base.Columns["MinPrice"];
                 this.columnMaxPrice = base.Columns["MaxPrice"];
+                this.columnIsClosed = base.Columns["IsClosed"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4148,6 +4223,8 @@ namespace PracticApp {
                 base.Columns.Add(this.columnMinPrice);
                 this.columnMaxPrice = new global::System.Data.DataColumn("MaxPrice", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMaxPrice);
+                this.columnIsClosed = new global::System.Data.DataColumn("IsClosed", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsClosed);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -5526,6 +5603,304 @@ namespace PracticApp {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DealDataTable : global::System.Data.TypedTableBase<DealRow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnDemandID;
+            
+            private global::System.Data.DataColumn columnOfferID;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DealDataTable() {
+                this.TableName = "Deal";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal DealDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected DealDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn DemandIDColumn {
+                get {
+                    return this.columnDemandID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn OfferIDColumn {
+                get {
+                    return this.columnOfferID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DealRow this[int index] {
+                get {
+                    return ((DealRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DealRowChangeEventHandler DealRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DealRowChangeEventHandler DealRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DealRowChangeEventHandler DealRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event DealRowChangeEventHandler DealRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddDealRow(DealRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DealRow AddDealRow(DemandRow parentDemandRowByFK_Deal_Demand, OfferRow parentOfferRowByFK_Deal_Offer) {
+                DealRow rowDealRow = ((DealRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        null};
+                if ((parentDemandRowByFK_Deal_Demand != null)) {
+                    columnValuesArray[1] = parentDemandRowByFK_Deal_Demand[0];
+                }
+                if ((parentOfferRowByFK_Deal_Offer != null)) {
+                    columnValuesArray[2] = parentOfferRowByFK_Deal_Offer[0];
+                }
+                rowDealRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDealRow);
+                return rowDealRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DealRow FindByID(int ID) {
+                return ((DealRow)(this.Rows.Find(new object[] {
+                            ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                DealDataTable cln = ((DealDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DealDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnDemandID = base.Columns["DemandID"];
+                this.columnOfferID = base.Columns["OfferID"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnDemandID = new global::System.Data.DataColumn("DemandID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDemandID);
+                this.columnOfferID = new global::System.Data.DataColumn("OfferID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOfferID);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
+                this.columnDemandID.AllowDBNull = false;
+                this.columnOfferID.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DealRow NewDealRow() {
+                return ((DealRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DealRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(DealRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DealRowChanged != null)) {
+                    this.DealRowChanged(this, new DealRowChangeEvent(((DealRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DealRowChanging != null)) {
+                    this.DealRowChanging(this, new DealRowChangeEvent(((DealRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DealRowDeleted != null)) {
+                    this.DealRowDeleted(this, new DealRowChangeEvent(((DealRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DealRowDeleting != null)) {
+                    this.DealRowDeleting(this, new DealRowChangeEvent(((DealRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemoveDealRow(DealRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                RealtorsDataSet ds = new RealtorsDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DealDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ClientsRow : global::System.Data.DataRow {
@@ -6817,6 +7192,22 @@ namespace PracticApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsClosed {
+                get {
+                    try {
+                        return ((bool)(this[this.tableOffer.IsClosedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'IsClosed\' в таблице \'Offer\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOffer.IsClosedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ClientsRow ClientsRow {
                 get {
                     return ((ClientsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Offer_Clients"])));
@@ -6856,6 +7247,29 @@ namespace PracticApp {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Offer_Realty1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIsClosedNull() {
+                return this.IsNull(this.tableOffer.IsClosedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIsClosedNull() {
+                this[this.tableOffer.IsClosedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DealRow[] GetDealRows() {
+                if ((this.Table.ChildRelations["FK_Deal_Offer"] == null)) {
+                    return new DealRow[0];
+                }
+                else {
+                    return ((DealRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Deal_Offer"])));
                 }
             }
         }
@@ -6968,6 +7382,22 @@ namespace PracticApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsClosed {
+                get {
+                    try {
+                        return ((bool)(this[this.tableDemand.IsClosedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'IsClosed\' в таблице \'Demand\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDemand.IsClosedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ClientsRow ClientsRow {
                 get {
                     return ((ClientsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Demand_Clients"])));
@@ -7037,6 +7467,18 @@ namespace PracticApp {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsIsClosedNull() {
+                return this.IsNull(this.tableDemand.IsClosedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetIsClosedNull() {
+                this[this.tableDemand.IsClosedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ApartmentFilterRow[] GetApartmentFilterRows() {
                 if ((this.Table.ChildRelations["FK_ApartmentFilter_Demand"] == null)) {
                     return new ApartmentFilterRow[0];
@@ -7065,6 +7507,17 @@ namespace PracticApp {
                 }
                 else {
                     return ((LandFilterRow[])(base.GetChildRows(this.Table.ChildRelations["FK_LandFilter_Demand"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DealRow[] GetDealRows() {
+                if ((this.Table.ChildRelations["FK_Deal_Demand"] == null)) {
+                    return new DealRow[0];
+                }
+                else {
+                    return ((DealRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Deal_Demand"])));
                 }
             }
         }
@@ -7610,6 +8063,76 @@ namespace PracticApp {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class DealRow : global::System.Data.DataRow {
+            
+            private DealDataTable tableDeal;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal DealRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDeal = ((DealDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int ID {
+                get {
+                    return ((int)(this[this.tableDeal.IDColumn]));
+                }
+                set {
+                    this[this.tableDeal.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int DemandID {
+                get {
+                    return ((int)(this[this.tableDeal.DemandIDColumn]));
+                }
+                set {
+                    this[this.tableDeal.DemandIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int OfferID {
+                get {
+                    return ((int)(this[this.tableDeal.OfferIDColumn]));
+                }
+                set {
+                    this[this.tableDeal.OfferIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DemandRow DemandRow {
+                get {
+                    return ((DemandRow)(this.GetParentRow(this.Table.ParentRelations["FK_Deal_Demand"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Deal_Demand"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public OfferRow OfferRow {
+                get {
+                    return ((OfferRow)(this.GetParentRow(this.Table.ParentRelations["FK_Deal_Offer"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Deal_Offer"]);
+                }
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -8105,6 +8628,40 @@ namespace PracticApp {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public LandFilterRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class DealRowChangeEvent : global::System.EventArgs {
+            
+            private DealRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DealRowChangeEvent(DealRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public DealRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -12358,42 +12915,47 @@ SELECT ID, CoordinateLatitudes, CoordinateLongitudes FROM Realty WHERE (ID = @ID
             tableMapping.ColumnMappings.Add("RealtorID", "RealtorID");
             tableMapping.ColumnMappings.Add("RealtyID", "RealtyID");
             tableMapping.ColumnMappings.Add("Price", "Price");
+            tableMapping.ColumnMappings.Add("IsClosed", "IsClosed");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Offer] WHERE (([ID] = @Original_ID) AND ([ClientID] = @Origina" +
-                "l_ClientID) AND ([RealtorID] = @Original_RealtorID) AND ([RealtyID] = @Original_" +
-                "RealtyID) AND ([Price] = @Original_Price))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Offer] WHERE (([ID] = @Original_ID) AND ([ClientID] = @Original_ClientID) AND ([RealtorID] = @Original_RealtorID) AND ([RealtyID] = @Original_RealtyID) AND ([Price] = @Original_Price) AND ((@IsNull_IsClosed = 1 AND [IsClosed] IS NULL) OR ([IsClosed] = @Original_IsClosed)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RealtorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealtorID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RealtyID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealtyID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IsClosed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsClosed", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsClosed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsClosed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Offer] ([ClientID], [RealtorID], [RealtyID], [Price]) VALUES (" +
-                "@ClientID, @RealtorID, @RealtyID, @Price);\r\nSELECT ID, ClientID, RealtorID, Real" +
-                "tyID, Price FROM Offer WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Offer] ([ClientID], [RealtorID], [RealtyID], [Price], [IsClosed]) VA" +
+                "LUES (@ClientID, @RealtorID, @RealtyID, @Price, @IsClosed);\r\nSELECT ID, ClientID" +
+                ", RealtorID, RealtyID, Price, IsClosed FROM Offer WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealtorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtyID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealtyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsClosed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsClosed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Offer] SET [ClientID] = @ClientID, [RealtorID] = @RealtorID, [RealtyID] = @RealtyID, [Price] = @Price WHERE (([ID] = @Original_ID) AND ([ClientID] = @Original_ClientID) AND ([RealtorID] = @Original_RealtorID) AND ([RealtyID] = @Original_RealtyID) AND ([Price] = @Original_Price));
-SELECT ID, ClientID, RealtorID, RealtyID, Price FROM Offer WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Offer] SET [ClientID] = @ClientID, [RealtorID] = @RealtorID, [RealtyID] = @RealtyID, [Price] = @Price, [IsClosed] = @IsClosed WHERE (([ID] = @Original_ID) AND ([ClientID] = @Original_ClientID) AND ([RealtorID] = @Original_RealtorID) AND ([RealtyID] = @Original_RealtyID) AND ([Price] = @Original_Price) AND ((@IsNull_IsClosed = 1 AND [IsClosed] IS NULL) OR ([IsClosed] = @Original_IsClosed)));
+SELECT ID, ClientID, RealtorID, RealtyID, Price, IsClosed FROM Offer WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealtorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtyID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealtyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsClosed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsClosed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RealtorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealtorID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RealtyID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealtyID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IsClosed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsClosed", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsClosed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsClosed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -12407,10 +12969,10 @@ SELECT ID, ClientID, RealtorID, RealtyID, Price FROM Offer WHERE (ID = @ID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, ClientID, RealtorID, RealtyID, Price FROM dbo.Offer";
+            this._commandCollection[0].CommandText = "SELECT ID, ClientID, RealtorID, RealtyID, Price, IsClosed FROM Offer";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -12419,23 +12981,29 @@ SELECT ID, ClientID, RealtorID, RealtyID, Price FROM Offer WHERE (ID = @ID)";
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "INSERT INTO [dbo].[Offer] ([ClientID], [RealtorID], [RealtyID], [Price]) VALUES (" +
-                "@ClientID, @RealtorID, @RealtyID, @Price);";
+            this._commandCollection[2].CommandText = "SELECT ID, ClientID, RealtorID, RealtyID, Price, IsClosed FROM Offer WHERE ID = @" +
+                "id";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ClientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtorID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "RealtorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtyID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "RealtyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "UPDATE [dbo].[Offer] SET [ClientID] = @ClientID, [RealtorID] = @RealtorID, [Realt" +
-                "yID] = @RealtyID, [Price] = @Price WHERE ID = @id";
+            this._commandCollection[3].CommandText = "INSERT INTO [dbo].[Offer] ([ClientID], [RealtorID], [RealtyID], [Price]) VALUES (" +
+                "@ClientID, @RealtorID, @RealtyID, @Price);";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ClientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtorID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "RealtorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtyID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "RealtyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "UPDATE [dbo].[Offer] SET [ClientID] = @ClientID, [RealtorID] = @RealtorID, [Realt" +
+                "yID] = @RealtyID, [Price] = @Price WHERE ID = @id";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ClientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtorID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "RealtorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtyID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "RealtyID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12457,6 +13025,18 @@ SELECT ID, ClientID, RealtorID, RealtyID, Price FROM Offer WHERE (ID = @ID)";
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual RealtorsDataSet.OfferDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            RealtorsDataSet.OfferDataTable dataTable = new RealtorsDataSet.OfferDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual RealtorsDataSet.OfferDataTable GetDataByID(int id) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(id));
             RealtorsDataSet.OfferDataTable dataTable = new RealtorsDataSet.OfferDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -12495,12 +13075,20 @@ SELECT ID, ClientID, RealtorID, RealtyID, Price FROM Offer WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, int Original_ClientID, int Original_RealtorID, int Original_RealtyID, decimal Original_Price) {
+        public virtual int Delete(int Original_ID, int Original_ClientID, int Original_RealtorID, int Original_RealtyID, decimal Original_Price, global::System.Nullable<bool> Original_IsClosed) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_ClientID));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_RealtorID));
             this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_RealtyID));
             this.Adapter.DeleteCommand.Parameters[4].Value = ((decimal)(Original_Price));
+            if ((Original_IsClosed.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((bool)(Original_IsClosed.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12521,11 +13109,17 @@ SELECT ID, ClientID, RealtorID, RealtyID, Price FROM Offer WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ClientID, int RealtorID, int RealtyID, decimal Price) {
+        public virtual int Insert(int ClientID, int RealtorID, int RealtyID, decimal Price, global::System.Nullable<bool> IsClosed) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ClientID));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(RealtorID));
             this.Adapter.InsertCommand.Parameters[2].Value = ((int)(RealtyID));
             this.Adapter.InsertCommand.Parameters[3].Value = ((decimal)(Price));
+            if ((IsClosed.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((bool)(IsClosed.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12546,17 +13140,31 @@ SELECT ID, ClientID, RealtorID, RealtyID, Price FROM Offer WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ClientID, int RealtorID, int RealtyID, decimal Price, int Original_ID, int Original_ClientID, int Original_RealtorID, int Original_RealtyID, decimal Original_Price, int ID) {
+        public virtual int Update(int ClientID, int RealtorID, int RealtyID, decimal Price, global::System.Nullable<bool> IsClosed, int Original_ID, int Original_ClientID, int Original_RealtorID, int Original_RealtyID, decimal Original_Price, global::System.Nullable<bool> Original_IsClosed, int ID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ClientID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(RealtorID));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(RealtyID));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((decimal)(Price));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ClientID));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_RealtorID));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_RealtyID));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((decimal)(Original_Price));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(ID));
+            if ((IsClosed.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((bool)(IsClosed.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_ClientID));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_RealtorID));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_RealtyID));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((decimal)(Original_Price));
+            if ((Original_IsClosed.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(Original_IsClosed.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12577,8 +13185,8 @@ SELECT ID, ClientID, RealtorID, RealtyID, Price FROM Offer WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ClientID, int RealtorID, int RealtyID, decimal Price, int Original_ID, int Original_ClientID, int Original_RealtorID, int Original_RealtyID, decimal Original_Price) {
-            return this.Update(ClientID, RealtorID, RealtyID, Price, Original_ID, Original_ClientID, Original_RealtorID, Original_RealtyID, Original_Price, Original_ID);
+        public virtual int Update(int ClientID, int RealtorID, int RealtyID, decimal Price, global::System.Nullable<bool> IsClosed, int Original_ID, int Original_ClientID, int Original_RealtorID, int Original_RealtyID, decimal Original_Price, global::System.Nullable<bool> Original_IsClosed) {
+            return this.Update(ClientID, RealtorID, RealtyID, Price, IsClosed, Original_ID, Original_ClientID, Original_RealtorID, Original_RealtyID, Original_Price, Original_IsClosed, Original_ID);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12610,7 +13218,7 @@ SELECT ID, ClientID, RealtorID, RealtyID, Price FROM Offer WHERE (ID = @ID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int NewOffer(int ClientID, int RealtorID, int RealtyID, decimal Price) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             command.Parameters[0].Value = ((int)(ClientID));
             command.Parameters[1].Value = ((int)(RealtorID));
             command.Parameters[2].Value = ((int)(RealtyID));
@@ -12637,7 +13245,7 @@ SELECT ID, ClientID, RealtorID, RealtyID, Price FROM Offer WHERE (ID = @ID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateAllFields(int ClientID, int RealtorID, int RealtyID, decimal Price, int id) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             command.Parameters[0].Value = ((int)(ClientID));
             command.Parameters[1].Value = ((int)(RealtorID));
             command.Parameters[2].Value = ((int)(RealtyID));
@@ -12789,10 +13397,11 @@ SELECT ID, ClientID, RealtorID, RealtyID, Price FROM Offer WHERE (ID = @ID)";
             tableMapping.ColumnMappings.Add("Address", "Address");
             tableMapping.ColumnMappings.Add("MinPrice", "MinPrice");
             tableMapping.ColumnMappings.Add("MaxPrice", "MaxPrice");
+            tableMapping.ColumnMappings.Add("IsClosed", "IsClosed");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Demand] WHERE (([ID] = @Original_ID) AND ([ClientID] = @Original_ClientID) AND ([RealtorID] = @Original_RealtorID) AND ([Type] = @Original_Type) AND ((@IsNull_Address = 1 AND [Address] IS NULL) OR ([Address] = @Original_Address)) AND ((@IsNull_MinPrice = 1 AND [MinPrice] IS NULL) OR ([MinPrice] = @Original_MinPrice)) AND ((@IsNull_MaxPrice = 1 AND [MaxPrice] IS NULL) OR ([MaxPrice] = @Original_MaxPrice)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Demand] WHERE (([ID] = @Original_ID) AND ([ClientID] = @Original_ClientID) AND ([RealtorID] = @Original_RealtorID) AND ([Type] = @Original_Type) AND ((@IsNull_Address = 1 AND [Address] IS NULL) OR ([Address] = @Original_Address)) AND ((@IsNull_MinPrice = 1 AND [MinPrice] IS NULL) OR ([MinPrice] = @Original_MinPrice)) AND ((@IsNull_MaxPrice = 1 AND [MaxPrice] IS NULL) OR ([MaxPrice] = @Original_MaxPrice)) AND ((@IsNull_IsClosed = 1 AND [IsClosed] IS NULL) OR ([IsClosed] = @Original_IsClosed)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -12804,10 +13413,12 @@ SELECT ID, ClientID, RealtorID, RealtyID, Price FROM Offer WHERE (ID = @ID)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MinPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MinPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaxPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IsClosed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsClosed", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsClosed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsClosed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Demand] ([ClientID], [RealtorID], [Type], [Address], [MinPrice], [MaxPrice]) VALUES (@ClientID, @RealtorID, @Type, @Address, @MinPrice, @MaxPrice);
-SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Demand] ([ClientID], [RealtorID], [Type], [Address], [MinPrice], [MaxPrice], [IsClosed]) VALUES (@ClientID, @RealtorID, @Type, @Address, @MinPrice, @MaxPrice, @IsClosed);
+SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice, IsClosed FROM Demand WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealtorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -12815,10 +13426,11 @@ SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WH
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Address", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MinPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MinPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsClosed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsClosed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Demand] SET [ClientID] = @ClientID, [RealtorID] = @RealtorID, [Type] = @Type, [Address] = @Address, [MinPrice] = @MinPrice, [MaxPrice] = @MaxPrice WHERE (([ID] = @Original_ID) AND ([ClientID] = @Original_ClientID) AND ([RealtorID] = @Original_RealtorID) AND ([Type] = @Original_Type) AND ((@IsNull_Address = 1 AND [Address] IS NULL) OR ([Address] = @Original_Address)) AND ((@IsNull_MinPrice = 1 AND [MinPrice] IS NULL) OR ([MinPrice] = @Original_MinPrice)) AND ((@IsNull_MaxPrice = 1 AND [MaxPrice] IS NULL) OR ([MaxPrice] = @Original_MaxPrice)));
-SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Demand] SET [ClientID] = @ClientID, [RealtorID] = @RealtorID, [Type] = @Type, [Address] = @Address, [MinPrice] = @MinPrice, [MaxPrice] = @MaxPrice, [IsClosed] = @IsClosed WHERE (([ID] = @Original_ID) AND ([ClientID] = @Original_ClientID) AND ([RealtorID] = @Original_RealtorID) AND ([Type] = @Original_Type) AND ((@IsNull_Address = 1 AND [Address] IS NULL) OR ([Address] = @Original_Address)) AND ((@IsNull_MinPrice = 1 AND [MinPrice] IS NULL) OR ([MinPrice] = @Original_MinPrice)) AND ((@IsNull_MaxPrice = 1 AND [MaxPrice] IS NULL) OR ([MaxPrice] = @Original_MaxPrice)) AND ((@IsNull_IsClosed = 1 AND [IsClosed] IS NULL) OR ([IsClosed] = @Original_IsClosed)));
+SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice, IsClosed FROM Demand WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealtorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -12826,6 +13438,7 @@ SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WH
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Address", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MinPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MinPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsClosed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsClosed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RealtorID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RealtorID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -12836,6 +13449,8 @@ SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WH
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MinPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MinPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaxPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxPrice", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxPrice", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxPrice", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_IsClosed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsClosed", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_IsClosed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IsClosed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -12849,25 +13464,30 @@ SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WH
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM dbo.Demand" +
-                "";
+            this._commandCollection[0].CommandText = "SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice, IsClosed FROM " +
+                "Demand";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "UPDATE [dbo].[Demand] SET [ClientID] = @ClientID, [RealtorID] = @RealtorID, [Type" +
+            this._commandCollection[1].CommandText = "DELETE FROM [dbo].[Demand] WHERE ID = @id";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "UPDATE [dbo].[Demand] SET [ClientID] = @ClientID, [RealtorID] = @RealtorID, [Type" +
                 "] = @Type, [Address] = @Address, [MinPrice] = @MinPrice, [MaxPrice] = @MaxPrice " +
                 "WHERE ID = @id";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ClientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtorID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "RealtorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Address", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MinPrice", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "MinPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxPrice", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "MaxPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ClientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RealtorID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "RealtorID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Address", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MinPrice", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "MinPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxPrice", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "MaxPrice", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12927,7 +13547,7 @@ SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, int Original_ClientID, int Original_RealtorID, string Original_Type, string Original_Address, global::System.Nullable<int> Original_MinPrice, global::System.Nullable<int> Original_MaxPrice) {
+        public virtual int Delete(int Original_ID, int Original_ClientID, int Original_RealtorID, string Original_Type, string Original_Address, global::System.Nullable<int> Original_MinPrice, global::System.Nullable<int> Original_MaxPrice, global::System.Nullable<bool> Original_IsClosed) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_ClientID));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_RealtorID));
@@ -12961,6 +13581,14 @@ SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WH
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
+            if ((Original_IsClosed.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((bool)(Original_IsClosed.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -12981,7 +13609,7 @@ SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int ClientID, int RealtorID, string Type, string Address, global::System.Nullable<int> MinPrice, global::System.Nullable<int> MaxPrice) {
+        public virtual int Insert(int ClientID, int RealtorID, string Type, string Address, global::System.Nullable<int> MinPrice, global::System.Nullable<int> MaxPrice, global::System.Nullable<bool> IsClosed) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ClientID));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(RealtorID));
             if ((Type == null)) {
@@ -13008,6 +13636,12 @@ SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WH
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
+            if ((IsClosed.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((bool)(IsClosed.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -13028,7 +13662,23 @@ SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ClientID, int RealtorID, string Type, string Address, global::System.Nullable<int> MinPrice, global::System.Nullable<int> MaxPrice, int Original_ID, int Original_ClientID, int Original_RealtorID, string Original_Type, string Original_Address, global::System.Nullable<int> Original_MinPrice, global::System.Nullable<int> Original_MaxPrice, int ID) {
+        public virtual int Update(
+                    int ClientID, 
+                    int RealtorID, 
+                    string Type, 
+                    string Address, 
+                    global::System.Nullable<int> MinPrice, 
+                    global::System.Nullable<int> MaxPrice, 
+                    global::System.Nullable<bool> IsClosed, 
+                    int Original_ID, 
+                    int Original_ClientID, 
+                    int Original_RealtorID, 
+                    string Original_Type, 
+                    string Original_Address, 
+                    global::System.Nullable<int> Original_MinPrice, 
+                    global::System.Nullable<int> Original_MaxPrice, 
+                    global::System.Nullable<bool> Original_IsClosed, 
+                    int ID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ClientID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(RealtorID));
             if ((Type == null)) {
@@ -13055,40 +13705,54 @@ SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WH
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_ID));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_ClientID));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_RealtorID));
+            if ((IsClosed.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((bool)(IsClosed.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_ClientID));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_RealtorID));
             if ((Original_Type == null)) {
                 throw new global::System.ArgumentNullException("Original_Type");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Type));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Type));
             }
             if ((Original_Address == null)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_Address));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Address));
             }
             if ((Original_MinPrice.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_MinPrice.Value));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_MinPrice.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             if ((Original_MaxPrice.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_MaxPrice.Value));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_MaxPrice.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(ID));
+            if ((Original_IsClosed.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((bool)(Original_IsClosed.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -13109,8 +13773,32 @@ SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int ClientID, int RealtorID, string Type, string Address, global::System.Nullable<int> MinPrice, global::System.Nullable<int> MaxPrice, int Original_ID, int Original_ClientID, int Original_RealtorID, string Original_Type, string Original_Address, global::System.Nullable<int> Original_MinPrice, global::System.Nullable<int> Original_MaxPrice) {
-            return this.Update(ClientID, RealtorID, Type, Address, MinPrice, MaxPrice, Original_ID, Original_ClientID, Original_RealtorID, Original_Type, Original_Address, Original_MinPrice, Original_MaxPrice, Original_ID);
+        public virtual int Update(int ClientID, int RealtorID, string Type, string Address, global::System.Nullable<int> MinPrice, global::System.Nullable<int> MaxPrice, global::System.Nullable<bool> IsClosed, int Original_ID, int Original_ClientID, int Original_RealtorID, string Original_Type, string Original_Address, global::System.Nullable<int> Original_MinPrice, global::System.Nullable<int> Original_MaxPrice, global::System.Nullable<bool> Original_IsClosed) {
+            return this.Update(ClientID, RealtorID, Type, Address, MinPrice, MaxPrice, IsClosed, Original_ID, Original_ClientID, Original_RealtorID, Original_Type, Original_Address, Original_MinPrice, Original_MaxPrice, Original_IsClosed, Original_ID);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteDemand(int id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13118,7 +13806,7 @@ SELECT ID, ClientID, RealtorID, Type, Address, MinPrice, MaxPrice FROM Demand WH
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateDemand(int ClientID, int RealtorID, string Type, string Address, global::System.Nullable<int> MinPrice, global::System.Nullable<int> MaxPrice, int id) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
             command.Parameters[0].Value = ((int)(ClientID));
             command.Parameters[1].Value = ((int)(RealtorID));
             if ((Type == null)) {
@@ -15078,6 +15766,407 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class DealTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public DealTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Deal";
+            tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("DemandID", "DemandID");
+            tableMapping.ColumnMappings.Add("OfferID", "OfferID");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Deal] WHERE (([ID] = @Original_ID) AND ([DemandID] = @Original" +
+                "_DemandID) AND ([OfferID] = @Original_OfferID))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DemandID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DemandID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OfferID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OfferID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Deal] ([DemandID], [OfferID]) VALUES (@DemandID, @OfferID);\r\nS" +
+                "ELECT ID, DemandID, OfferID FROM Deal WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DemandID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DemandID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OfferID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OfferID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Deal] SET [DemandID] = @DemandID, [OfferID] = @OfferID WHERE (([ID]" +
+                " = @Original_ID) AND ([DemandID] = @Original_DemandID) AND ([OfferID] = @Origina" +
+                "l_OfferID));\r\nSELECT ID, DemandID, OfferID FROM Deal WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DemandID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DemandID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OfferID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OfferID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DemandID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DemandID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_OfferID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "OfferID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::PracticApp.Properties.Settings.Default.RealtorsConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT ID, DemandID, OfferID FROM dbo.Deal";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "DELETE FROM [dbo].[Deal] WHERE ID = @id";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "INSERT INTO [dbo].[Deal] ([DemandID], [OfferID]) VALUES (@DemandID, @OfferID);";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DemandID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "DemandID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OfferID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OfferID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "UPDATE [dbo].[Deal] SET [DemandID] = @DemandID, [OfferID] = @OfferID WHERE ID = @" +
+                "id";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DemandID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "DemandID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OfferID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OfferID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(RealtorsDataSet.DealDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual RealtorsDataSet.DealDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            RealtorsDataSet.DealDataTable dataTable = new RealtorsDataSet.DealDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(RealtorsDataSet.DealDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(RealtorsDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Deal");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_ID, int Original_DemandID, int Original_OfferID) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_DemandID));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_OfferID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int DemandID, int OfferID) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(DemandID));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(OfferID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int DemandID, int OfferID, int Original_ID, int Original_DemandID, int Original_OfferID, int ID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(DemandID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(OfferID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_DemandID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_OfferID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(ID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int DemandID, int OfferID, int Original_ID, int Original_DemandID, int Original_OfferID) {
+            return this.Update(DemandID, OfferID, Original_ID, Original_DemandID, Original_OfferID, Original_ID);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteQuery(int id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertQuery(int DemandID, int OfferID) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            command.Parameters[0].Value = ((int)(DemandID));
+            command.Parameters[1].Value = ((int)(OfferID));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateQuery(int DemandID, int OfferID, int id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            command.Parameters[0].Value = ((int)(DemandID));
+            command.Parameters[1].Value = ((int)(OfferID));
+            command.Parameters[2].Value = ((int)(id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -15118,6 +16207,8 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
         private HouseFilterTableAdapter _houseFilterTableAdapter;
         
         private LandFilterTableAdapter _landFilterTableAdapter;
+        
+        private DealTableAdapter _dealTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -15346,6 +16437,20 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public DealTableAdapter DealTableAdapter {
+            get {
+                return this._dealTableAdapter;
+            }
+            set {
+                this._dealTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -15423,6 +16528,10 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                             && (this._landFilterTableAdapter.Connection != null))) {
                     return this._landFilterTableAdapter.Connection;
                 }
+                if (((this._dealTableAdapter != null) 
+                            && (this._dealTableAdapter.Connection != null))) {
+                    return this._dealTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -15481,6 +16590,9 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                 if ((this._landFilterTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._dealTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 return count;
             }
         }
@@ -15519,15 +16631,6 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._realtyTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.RealtyType.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._realtyTypeTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._realtyTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Realty.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -15543,6 +16646,24 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._realtyTypesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._realtyTypeTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.RealtyType.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._realtyTypeTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._offerTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Offer.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._offerTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -15591,15 +16712,6 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._offerTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Offer.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._offerTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._apartmentFilterTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ApartmentFilter.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -15624,6 +16736,15 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._landFilterTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._dealTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Deal.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._dealTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -15661,14 +16782,6 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._realtyTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.RealtyType.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._realtyTypeTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._realtyTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Realty.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -15682,6 +16795,22 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._realtyTypesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._realtyTypeTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.RealtyType.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._realtyTypeTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._offerTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Offer.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._offerTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -15725,14 +16854,6 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._offerTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Offer.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._offerTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._apartmentFilterTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ApartmentFilter.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -15757,6 +16878,14 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._dealTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Deal.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._dealTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -15767,6 +16896,14 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(RealtorsDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._dealTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Deal.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._dealTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._landFilterTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.LandFilter.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -15788,14 +16925,6 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._apartmentFilterTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._offerTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Offer.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._offerTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -15839,6 +16968,22 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._offerTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Offer.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._offerTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._realtyTypeTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.RealtyType.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._realtyTypeTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._realtyTypesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.RealtyTypes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -15852,14 +16997,6 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._realtyTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._realtyTypeTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.RealtyType.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._realtyTypeTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -15998,6 +17135,11 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
             }
             if (((this._landFilterTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._landFilterTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
+            if (((this._dealTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._dealTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -16168,6 +17310,15 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                         adaptersWithAcceptChangesDuringUpdate.Add(this._landFilterTableAdapter.Adapter);
                     }
                 }
+                if ((this._dealTableAdapter != null)) {
+                    revertConnections.Add(this._dealTableAdapter, this._dealTableAdapter.Connection);
+                    this._dealTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._dealTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._dealTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._dealTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._dealTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -16285,6 +17436,10 @@ SELECT ID, MinArea, MaxArea FROM LandFilter WHERE (ID = @ID)";
                 if ((this._landFilterTableAdapter != null)) {
                     this._landFilterTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._landFilterTableAdapter]));
                     this._landFilterTableAdapter.Transaction = null;
+                }
+                if ((this._dealTableAdapter != null)) {
+                    this._dealTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._dealTableAdapter]));
+                    this._dealTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

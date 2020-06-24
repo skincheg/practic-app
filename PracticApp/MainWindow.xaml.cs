@@ -82,5 +82,13 @@ namespace PracticApp
             AddDemand.ShowDialog();
             Show();
         }
+
+        private void AddDeal(object sender, RoutedEventArgs e)
+        {
+            Window AddDeal = new AddDeal();
+            Hide();
+            AddDeal.ShowDialog();
+            Show();
+        }
     }
 }

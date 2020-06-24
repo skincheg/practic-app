@@ -49,5 +49,10 @@ namespace PracticApp
             database.UpdateLand(minArea, maxArea, id);
         }
 
+        public void Delete(int id)
+        {
+            database.DeleteDemand(id);
+        }
+
     }
 }

@@ -31,3 +31,9 @@ C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticAp
 C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddNewOffer.baml
 C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddDemand.g.cs
 C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddDemand.baml
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddNewDemand.g.cs
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddNewDemand.baml
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddDeal.g.cs
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddDeal.baml
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddNewDeal.g.cs
+C:\Users\Skinxcheg\Desktop\Практика 2ПКС\Project\PracticApp\PracticApp\obj\Debug\AddNewDeal.baml

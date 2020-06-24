@@ -37,6 +37,11 @@ namespace PracticApp
             return (OfferDataTable)database.GetAllData();
         }
 
+        public OfferRow GetDataByID(int id)
+        {
+            return (OfferRow)database.GetOfferByID(id);
+        }
+
 
     }
 }

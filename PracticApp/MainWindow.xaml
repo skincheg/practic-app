@@ -188,6 +188,9 @@
                 <Button Style="{StaticResource OutlineBtn}" Click="AddDemand"  >
                     <TextBlock Text="Работа с потребностями"/>
                 </Button>
+                <Button Style="{StaticResource OutlineBtn}" Click="AddDeal"  >
+                    <TextBlock Text="Работа со сделками"/>
+                </Button>
             </StackPanel>
         </Grid>
     </Grid>
