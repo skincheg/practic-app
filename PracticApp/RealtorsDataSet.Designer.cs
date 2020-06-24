@@ -8845,9 +8845,9 @@ namespace PracticApp.RealtorsDataSetTableAdapters {
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT        ID, Name, Surname, Patronymic, Role\r\nFROM            Person\r\nWHERE " +
-                "       (ID IN\r\n                             (SELECT        ID\r\n                 " +
-                "              FROM            Clients))";
+            this._commandCollection[3].CommandText = "SELECT        ID, Name, Surname, Patronymic\r\nFROM            Person\r\nWHERE       " +
+                " (ID IN\r\n                             (SELECT        ID\r\n                       " +
+                "        FROM            Clients))";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
@@ -9258,20 +9258,19 @@ SELECT ID, Name, Surname, Patronymic FROM Person WHERE (ID = @ID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[8];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[9];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, Name, Surname, Patronymic FROM Person";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "INSERT INTO [dbo].[Person] ([Name], [Surname], [Patronymic], [Role]) VALUES (@Nam" +
-                "e, @Surname, @Patronymic, @Role);\r\nSELECT ID FROM Person";
+            this._commandCollection[1].CommandText = "INSERT INTO [dbo].[Person] ([Name], [Surname], [Patronymic]) VALUES (@Name, @Surn" +
+                "ame, @Patronymic);\r\nSELECT ID FROM Person";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Surname", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Surname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Patronymic", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Patronymic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Role", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Role", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "DELETE FROM Person WHERE ID = @id";
@@ -9283,29 +9282,38 @@ SELECT ID, Name, Surname, Patronymic FROM Person WHERE (ID = @ID)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT ID, Name, Surname, Patronymic FROM Person WHERE (@id IN (SELECT @id AS Exp" +
-                "r1 FROM Clients))";
+            this._commandCollection[4].CommandText = "SELECT        ID, Name, Surname, Patronymic\r\nFROM            Person\r\nWHERE       " +
+                " (ID IN\r\n                             (SELECT        ID\r\n                       " +
+                "        FROM            Clients)) AND (ID = @id)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT ID, Name, Surname, Patronymic FROM Person WHERE (Role = \'Realtor\')";
+            this._commandCollection[5].CommandText = "SELECT        ID, Name, Surname, Patronymic\r\nFROM            Person\r\nWHERE       " +
+                " (ID IN\r\n                             (SELECT        ID\r\n                       " +
+                "        FROM            Clients))";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT ID, Name, Surname, Patronymic FROM Person WHERE (Role = \'Realtor\') AND (ID" +
-                " = @id)";
+            this._commandCollection[6].CommandText = "SELECT        ID, Name, Surname, Patronymic\r\nFROM            Person\r\nWHERE       " +
+                " (ID IN\r\n                             (SELECT        ID\r\n                       " +
+                "        FROM            Realtors))";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "UPDATE       Person\r\nSET                Name = @name, Surname = @surname, Patrony" +
-                "mic = @patronymic\r\nWHERE        (ID = @id)";
+            this._commandCollection[7].CommandText = "SELECT        ID, Name, Surname, Patronymic\r\nFROM            Person\r\nWHERE       " +
+                " (ID = @id)";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@surname", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Surname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@patronymic", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Patronymic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[8].Connection = this.Connection;
+            this._commandCollection[8].CommandText = "UPDATE       Person\r\nSET                Name = @name, Surname = @surname, Patrony" +
+                "mic = @patronymic\r\nWHERE        (ID = @id)";
+            this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@surname", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Surname", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@patronymic", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Patronymic", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9347,14 +9355,9 @@ SELECT ID, Name, Surname, Patronymic FROM Person WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual RealtorsDataSet.PersonDataTable InitializeClient(string id) {
+        public virtual RealtorsDataSet.PersonDataTable InitializeClient(int id) {
             this.Adapter.SelectCommand = this.CommandCollection[4];
-            if ((id == null)) {
-                throw new global::System.ArgumentNullException("id");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(id));
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(id));
             RealtorsDataSet.PersonDataTable dataTable = new RealtorsDataSet.PersonDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -9364,7 +9367,7 @@ SELECT ID, Name, Surname, Patronymic FROM Person WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual RealtorsDataSet.PersonDataTable InitializeRealtor() {
+        public virtual RealtorsDataSet.PersonDataTable InitializeClients() {
             this.Adapter.SelectCommand = this.CommandCollection[5];
             RealtorsDataSet.PersonDataTable dataTable = new RealtorsDataSet.PersonDataTable();
             this.Adapter.Fill(dataTable);
@@ -9375,8 +9378,19 @@ SELECT ID, Name, Surname, Patronymic FROM Person WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual RealtorsDataSet.PersonDataTable InitializeRealtorByID(int id) {
+        public virtual RealtorsDataSet.PersonDataTable InitializeRealtor() {
             this.Adapter.SelectCommand = this.CommandCollection[6];
+            RealtorsDataSet.PersonDataTable dataTable = new RealtorsDataSet.PersonDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual RealtorsDataSet.PersonDataTable InitializeRealtorByID(int id) {
+            this.Adapter.SelectCommand = this.CommandCollection[7];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(id));
             RealtorsDataSet.PersonDataTable dataTable = new RealtorsDataSet.PersonDataTable();
             this.Adapter.Fill(dataTable);
@@ -9574,7 +9588,7 @@ SELECT ID, Name, Surname, Patronymic FROM Person WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int AddNewClient(string Name, string Surname, string Patronymic, string Role) {
+        public virtual int AddNewClient(string Name, string Surname, string Patronymic) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
             if ((Name == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
@@ -9593,12 +9607,6 @@ SELECT ID, Name, Surname, Patronymic FROM Person WHERE (ID = @ID)";
             }
             else {
                 command.Parameters[2].Value = ((string)(Patronymic));
-            }
-            if ((Role == null)) {
-                command.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[3].Value = ((string)(Role));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9646,7 +9654,7 @@ SELECT ID, Name, Surname, Patronymic FROM Person WHERE (ID = @ID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int SaveChangesRealtor(string name, string surname, string patronymic, int id) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[8];
             if ((name == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }

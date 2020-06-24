@@ -98,7 +98,7 @@ namespace PracticApp
         {
             try
             {
-                var currentClient = new PracticApp.RealtorsDataSetTableAdapters.PersonTableAdapter().GetData();
+                var currentClient = new PracticApp.RealtorsDataSetTableAdapters.PersonTableAdapter().InitializeRealtor();
                 int i = 0;
                 while (i < currentClient.Rows.Count && currentClient.Rows.Count > 0)
                 {
@@ -106,9 +106,10 @@ namespace PracticApp
                     string dbName = String.IsNullOrEmpty(currentClient.Rows[i].ItemArray[1] as string) ? "" : currentClient.Rows[i].ItemArray[1] as string;
                     string dbSurname = String.IsNullOrEmpty(currentClient.Rows[i].ItemArray[2] as string) ? "" : currentClient.Rows[i].ItemArray[2] as string;
                     string dbPatronymic = String.IsNullOrEmpty(currentClient.Rows[i].ItemArray[3] as string) ? "" : currentClient.Rows[i].ItemArray[3] as string;
-                    string dbRole = currentClient.Rows[i].ItemArray[4] as string;
 
-                    if (((LevenshteinDistance(dbName, searchTextBox.Text) >= 3) && (LevenshteinDistance(dbSurname, searchTextBox.Text) >= 3) && (LevenshteinDistance(dbPatronymic, searchTextBox.Text) >= 3)) || dbRole != "Realtor")
+
+
+                    if (((LevenshteinDistance(dbName, searchTextBox.Text) >= 3) && (LevenshteinDistance(dbSurname, searchTextBox.Text) >= 3) && (LevenshteinDistance(dbPatronymic, searchTextBox.Text) >= 3)))
                     {
                         currentClient.Rows.Remove(currentClient.Rows[i]);
 
@@ -139,6 +140,7 @@ namespace PracticApp
 
         private void personDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
             try
             {
                 clientID = Convert.ToInt32(((System.Data.DataRowView)((object[])e.AddedItems)[0]).Row.ItemArray[0]);
@@ -152,11 +154,8 @@ namespace PracticApp
                 ClientName.Text = clientName;
                 ClientSurname.Text = clientSurname;
                 ClientPatronymic.Text = clientPatronymic;
-            }
-            catch
-            {
-                
-            }
+            } catch { }
+
         }
 
 

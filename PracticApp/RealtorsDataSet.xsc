@@ -9,20 +9,20 @@
     <TableUISetting Name="Clients">
       <ColumnUISettings>
         <ColumnUISetting Name="ID">
-          <ControlSettings>
-            <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
               <BindableControlInfo Name="ComboBox" Type="System.Windows.Controls.ComboBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-            </ControlSetting>
-          </ControlSettings>
+            </ControlSetting></ControlSettings>
         </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>
     <TableUISetting Name="Realtors">
       <ColumnUISettings>
         <ColumnUISetting Name="ID">
-          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+          <ControlSettings>
+            <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
               <BindableControlInfo Name="ComboBox" Type="System.Windows.Controls.ComboBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-            </ControlSetting></ControlSettings>
+            </ControlSetting>
+          </ControlSettings>
         </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>
@@ -43,43 +43,33 @@
     <TableUISetting Name="Offer">
       <ColumnUISettings>
         <ColumnUISetting Name="ID">
-          <ControlSettings>
-            <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
               <BindableControlInfo Name="ComboBox" Type="System.Windows.Controls.ComboBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-            </ControlSetting>
-          </ControlSettings>
+            </ControlSetting></ControlSettings>
         </ColumnUISetting>
         <ColumnUISetting Name="ClientID">
-          <ControlSettings>
-            <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
               <BindableControlInfo Name="TextBox" Type="System.Windows.Controls.TextBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-            </ControlSetting>
-          </ControlSettings>
+            </ControlSetting></ControlSettings>
         </ColumnUISetting>
         <ColumnUISetting Name="RealtorID">
-          <ControlSettings>
-            <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
               <BindableControlInfo Name="TextBox" Type="System.Windows.Controls.TextBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-            </ControlSetting>
-          </ControlSettings>
+            </ControlSetting></ControlSettings>
         </ColumnUISetting>
         <ColumnUISetting Name="RealtyID">
-          <ControlSettings>
-            <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
               <BindableControlInfo Name="TextBox" Type="System.Windows.Controls.TextBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-            </ControlSetting>
-          </ControlSettings>
+            </ControlSetting></ControlSettings>
         </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>
     <TableUISetting Name="Demand">
       <ColumnUISettings>
         <ColumnUISetting Name="ID">
-          <ControlSettings>
-            <ControlSetting ArtifactName="Microsoft:System.Windows:WPF">
+          <ControlSettings><ControlSetting ArtifactName="Microsoft:System.Windows:WPF" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
               <BindableControlInfo Name="ComboBox" Type="System.Windows.Controls.ComboBox" AssemblyName="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-            </ControlSetting>
-          </ControlSettings>
+            </ControlSetting></ControlSettings>
         </ColumnUISetting>
       </ColumnUISettings>
     </TableUISetting>

@@ -64,7 +64,7 @@ namespace PracticApp
                 return;
             }
             PracticApp.RealtorsDataSetTableAdapters.PersonTableAdapter realtorsDataSetPersonTableAdapter = new PracticApp.RealtorsDataSetTableAdapters.PersonTableAdapter();
-            realtorsDataSetPersonTableAdapter.AddNewClient(clientName, clientSurname, clientPatronymic, "Client");
+            realtorsDataSetPersonTableAdapter.AddNewClient(clientName, clientSurname, clientPatronymic);
             var newPersonData = realtorsDataSetPersonTableAdapter.GetLastID();
             PracticApp.RealtorsDataSetTableAdapters.ClientsTableAdapter realtorsDataSetClientsTableAdapter = new PracticApp.RealtorsDataSetTableAdapters.ClientsTableAdapter();
             realtorsDataSetClientsTableAdapter.AddNewClient(newPersonData.Last().ID, clientPhone, clientEmail);

@@ -127,7 +127,6 @@
                         <DataGridTextColumn x:Name="nameColumn1" Binding="{Binding Name}" Header="Name" Width="*"/>
                         <DataGridTextColumn x:Name="surnameColumn1" Binding="{Binding Surname}" Header="Surname" Width="*"/>
                         <DataGridTextColumn x:Name="patronymicColumn1" Binding="{Binding Patronymic}" Header="Patronymic" Width="*"/>
-                        <DataGridTextColumn x:Name="roleColumn" Binding="{Binding Role}" Header="Role" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
 

@@ -95,7 +95,7 @@ namespace PracticApp
         {
             try
             {
-                var currentClient = new PracticApp.RealtorsDataSetTableAdapters.PersonTableAdapter().GetData();
+                var currentClient = new PracticApp.RealtorsDataSetTableAdapters.PersonTableAdapter().InitializeClients();
                 int i = 0;
                 while (i < currentClient.Rows.Count && currentClient.Rows.Count > 0)
                 {
@@ -103,9 +103,8 @@ namespace PracticApp
                     string dbName = String.IsNullOrEmpty(currentClient.Rows[i].ItemArray[1] as string) ? "" : currentClient.Rows[i].ItemArray[1] as string;
                     string dbSurname = String.IsNullOrEmpty(currentClient.Rows[i].ItemArray[2] as string) ? "" : currentClient.Rows[i].ItemArray[2] as string;
                     string dbPatronymic = String.IsNullOrEmpty(currentClient.Rows[i].ItemArray[3] as string) ? "" : currentClient.Rows[i].ItemArray[3] as string;
-                    string dbRole = currentClient.Rows[i].ItemArray[4] as string;
 
-                    if (((LevenshteinDistance(dbName, searchTextBox.Text) >= 3) && (LevenshteinDistance(dbSurname, searchTextBox.Text) >= 3) && (LevenshteinDistance(dbPatronymic, searchTextBox.Text) >= 3)) || dbRole != "Client")
+                    if (((LevenshteinDistance(dbName, searchTextBox.Text) >= 3) && (LevenshteinDistance(dbSurname, searchTextBox.Text) >= 3) && (LevenshteinDistance(dbPatronymic, searchTextBox.Text) >= 3)))
                     {
                         currentClient.Rows.Remove(currentClient.Rows[i]);
 
@@ -119,7 +118,7 @@ namespace PracticApp
 
                 if (searchTextBox.Text == "")
                 {
-                    personDataGrid1.ItemsSource = new PracticApp.RealtorsDataSetTableAdapters.ClientsTableAdapter().InitializeClients();
+                    personDataGrid1.ItemsSource = new PracticApp.RealtorsDataSetTableAdapters.PersonTableAdapter().InitializeClients();
                 } else
                 {
                     personDataGrid1.ItemsSource = currentClient;
@@ -140,7 +139,7 @@ namespace PracticApp
                 var currentClient = new PracticApp.RealtorsDataSetTableAdapters.ClientsTableAdapter().InitializeTextBox(clientID);
                 phoneTextBox.Text = currentClient.First().Phone;
                 emailTextBox.Text = currentClient.First().Email;
-                var currentClientCopy = new PracticApp.RealtorsDataSetTableAdapters.PersonTableAdapter().InitializeClient(Convert.ToString(clientID)).First();
+                var currentClientCopy = new PracticApp.RealtorsDataSetTableAdapters.PersonTableAdapter().InitializeClient((clientID)).First();
                 string clientName = String.IsNullOrEmpty(currentClientCopy.Name) ? "" : currentClientCopy.Name;
                 string clientSurname = String.IsNullOrEmpty(currentClientCopy.Surname) ? "" : currentClientCopy.Surname;
                 string clientPatronymic = String.IsNullOrEmpty(currentClientCopy.Patronymic) ? "" : currentClientCopy.Patronymic;
